@@ -442,6 +442,50 @@ body::before{
 }
 
 /* ==========================================================================
+   Team — who answers when you show up
+   ========================================================================== */
+
+.team{
+  padding-block: clamp(40px, 7vw, 64px);
+  border-bottom: 1px solid var(--line);
+  position: relative; z-index: 1;
+}
+.team-row{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+}
+.team-photo{
+  width: 116px; height: 116px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold);
+  margin: 0;
+  flex-shrink: 0;
+}
+.team-photo img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+}
+.team-info{ max-width: 48ch; }
+.team-name{
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
+  color: var(--paper);
+  margin: 10px 0 8px;
+}
+.team-role{ color: var(--paper-dim); font-size: .98rem; }
+
+@media (min-width: 700px){
+  .team-row{ flex-direction: row; text-align: left; gap: 28px; }
+}
+
+/* ==========================================================================
    Services — work-order list, not cards
    ========================================================================== */
 
@@ -661,6 +705,32 @@ body::before{
   .footer-row{
     flex-direction: row; align-items: center; justify-content: space-between;
   }
+}
+
+.dev-credit{
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  letter-spacing: .04em;
+  color: var(--steel);
+}
+.dev-links{ display: flex; gap: 4px; }
+.dev-links a{
+  color: var(--steel);
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+  margin: -8px;
+  transition: color .2s var(--ease);
+}
+.dev-links a:hover{ color: var(--gold); }
+.dev-links svg{ width: 15px; height: 15px; }
+
+@media (min-width: 760px){
+  .dev-credit{ flex-direction: row; justify-content: center; }
 }
 
 /* ==========================================================================
