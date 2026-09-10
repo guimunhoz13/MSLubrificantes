@@ -602,6 +602,8 @@ body::before{
   display: flex;
   gap: 20px;
   overflow-x: auto;
+  max-width: var(--wrap);
+  margin-inline: auto;
   padding-inline: var(--gutter);
   padding-bottom: 8px;
   scroll-snap-type: x proximity;
