@@ -42,7 +42,7 @@ body{
 img{ max-width: 100%; display: block; }
 a{ color: inherit; text-decoration: none; }
 ul, ol, dl{ margin: 0; padding: 0; list-style: none; }
-h1,h2,h3,p,dl,dd{ margin: 0; }
+h1,h2,h3,p,dl,dd,figure{ margin: 0; }
 
 .sr-only{
   position: absolute; width: 1px; height: 1px;
@@ -286,25 +286,58 @@ body::before{
 .hero-device{
   position: relative;
   justify-self: center;
-  width: min(78vw, 340px);
-  margin-top: 8px;
+  width: min(84vw, 400px);
+  margin-top: 20px;
+  padding-bottom: 14%;
 }
-.drop-graphic{ width: 100%; height: auto; }
+
+.hero-photo-main{
+  position: relative;
+  margin: 0;
+  border-top: 3px solid var(--gold);
+  aspect-ratio: 827 / 707;
+  overflow: hidden;
+}
+.hero-photo-main img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(1.08) contrast(1.05);
+}
+.hero-photo-inset{
+  position: absolute;
+  left: -7%; bottom: -14%;
+  width: 42%;
+  margin: 0;
+  border: 3px solid var(--ink);
+  aspect-ratio: 265 / 366;
+  overflow: hidden;
+  box-shadow: 0 16px 30px rgba(0,0,0,.5);
+}
+.hero-photo-inset img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(1.08) contrast(1.05);
+}
+
 .gauge-graphic{
   position: absolute;
-  left: 50%; bottom: 6%;
-  width: 62%;
-  transform: translateX(-50%);
-  filter: drop-shadow(0 8px 18px rgba(0,0,0,.45));
+  right: 5%; bottom: 5%;
+  width: 34%;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,.6));
 }
 .gauge-needle{
   transform-origin: 100px 120px;
   transform: rotate(-120deg);
 }
-.gauge-zone{ opacity: .9; }
+.gauge-zone{ opacity: .95; }
 .device-tag{
   position: absolute;
-  top: 6%; right: -6%;
+  top: 5%; left: 5%;
+}
+.hero-photo-main .device-tag{
+  background: rgba(18, 17, 16, .82);
+  border-color: var(--gold);
+  backdrop-filter: blur(2px);
 }
 
 .ticker{
@@ -480,12 +513,21 @@ body::before{
   content: "";
   display: none;
 }
-.process-list li{ position: relative; padding-top: 26px; }
-.process-list li::before{
-  content: "";
-  position: absolute; top: 0; left: 0; width: 40px; height: 2px;
-  background: var(--gold);
+.process-list li{ position: relative; }
+.process-photo{
+  border-top: 2px solid var(--gold);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  margin-bottom: 18px;
 }
+.process-photo img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: saturate(1.05) contrast(1.03);
+  transition: transform .5s var(--ease);
+}
+.process-list li:hover .process-photo img{ transform: scale(1.04); }
 .process-num{
   display: block;
   font-family: var(--font-mono);

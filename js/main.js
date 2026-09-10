@@ -63,27 +63,22 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Manual stroke draw-in for the drop outline (no DrawSVG plugin on the free CDN).
-  var outline = document.querySelector(".drop-outline");
-  var outlineLen = outline ? outline.getTotalLength() : 0;
-  if (outline) {
-    outline.style.strokeDasharray = outlineLen;
-    outline.style.strokeDashoffset = outlineLen;
-  }
-
-  // Hero entrance: eyebrow, headline lines, copy/actions, then the drop + gauge device.
-  // This runs on load, independent of scroll, so it always completes.
+  // Hero entrance: eyebrow, headline lines, copy/actions, then the storefront
+  // photo and its inset detail shot. Runs on load, independent of scroll, so
+  // it always completes.
   var heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
   heroTl
     .to(".hero .eyebrow[data-reveal]", { opacity: 1, y: 0, duration: .6 })
     .to(".hero-title .line", { opacity: 1, y: 0, duration: .8, stagger: .1 }, .1)
     .to(".hero-side [data-reveal]", { opacity: 1, y: 0, duration: .7, stagger: .1 }, .55)
-    .fromTo(".drop-graphic",
-      { opacity: 0, scale: .88, transformOrigin: "50% 30%" },
-      { opacity: 1, scale: 1, duration: 1.1 }, .35)
-    .to(outline, { strokeDashoffset: 0, duration: 1.3 }, .35)
-    .fromTo(".gauge-graphic", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .7 }, .8)
-    .fromTo(".device-tag", { opacity: 0 }, { opacity: 1, duration: .5 }, 1.1);
+    .fromTo(".hero-photo-main",
+      { opacity: 0, scale: 1.05 },
+      { opacity: 1, scale: 1, duration: 1 }, .3)
+    .fromTo(".device-tag", { opacity: 0 }, { opacity: 1, duration: .5 }, .9)
+    .fromTo(".hero-photo-inset",
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: .7 }, .95)
+    .fromTo(".gauge-graphic", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .6 }, 1.1);
   heroEls.forEach(function (el) { el.classList.add("is-visible"); });
 
   // Signature moment: the gauge needle sweeps into the "ideal" zone as the
