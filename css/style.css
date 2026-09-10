@@ -309,7 +309,7 @@ body::before{
   width: 42%;
   margin: 0;
   border: 3px solid var(--ink);
-  aspect-ratio: 265 / 366;
+  aspect-ratio: 382 / 510;
   overflow: hidden;
   box-shadow: 0 16px 30px rgba(0,0,0,.5);
 }
